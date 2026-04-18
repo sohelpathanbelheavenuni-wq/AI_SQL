@@ -10,8 +10,30 @@ def generate_sql():
     question = data.get("question")
 
     prompt = f"""
-You are an SQL generator.
-Return ONLY SQL query.
+You are an expert SQL generator.
+ONLY use the following schema:
+Database: ai_sql_demo
+Tables:
+1. customers
+- customer_id
+- customer_name
+- country
+2. salesdata
+- order_id
+- customer
+- product
+- sales
+- region
+3. products
+- product_id
+- product_name
+- category
+RULES:
+- Use ONLY these tables and columns
+- Do NOT invent column names
+- Use correct joins when needed
+- Return ONLY SQL query
+- No explanation
 
 Question: {question}
 SQL:
